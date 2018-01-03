@@ -31,9 +31,22 @@ export default class App extends Component {
 
   }
 
+  _googleLogin() {
+    Linking.openURL([
+      'https://accounts.google.com/o/oauth2/v2/auth',
+      '?client_id=920496582675-vvrhnaakak4bgp5fiv2b5euqsjd23sge.apps.googleusercontent.com',
+      '&response_type=code',
+      '&scope=openid%20email',
+      '&redirect_uri=com.demoauth2:/oauth2redirect',
+      '&state=security_token%3D138r5719ru3e1%26url%3Dhttps://oauth2-login-demo.example.com/myHome',
+      '&nonce=0394852-3190485-2490358',
+    ].join(''));
+
+  }
+
   componentDidMount() {
     Linking.addEventListener('url', (event) => {
-      var facebookToken = event.url.split('#')[1].split('=')[1].split('&')[0];
+      //var facebookToken = event.url.split('#')[1].split('=')[1].split('&')[0];
       console.warn(event);
     });
   }
@@ -45,9 +58,11 @@ export default class App extends Component {
           Welcome to React Native!
         </Text>
         <TouchableOpacity onPress={this._facebookLogin}>
-          <Text>Login Facebook</Text>
+          <Text style={{ fontSize: 30, color: 'red' }}>Login Facebook</Text>
         </TouchableOpacity>
-        
+        <TouchableOpacity onPress={this._googleLogin}>
+          <Text style={{ fontSize: 30, color: 'red' }}>Login Google</Text>
+        </TouchableOpacity>
       </View>
     );
   }

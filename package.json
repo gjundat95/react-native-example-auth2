@@ -9,7 +9,6 @@
   "dependencies": {
     "react": "16.0.0",
     "react-native": "0.51.0",
-    "react-native-oauth": "^2.2.0",
     "react-native-simple-auth": "^2.2.0"
   },
   "devDependencies": {
